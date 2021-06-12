@@ -1,0 +1,4 @@
+sources:
+  "2.3.0.201":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/vulkan-memory-allocator/vulkan-memory-allocator-2.3.0.201.tar.xz"
+    sha256: "121e06599109bdc7a6f9de7cff85c311b790f281b17ae4523ef0057fb07daf99"
