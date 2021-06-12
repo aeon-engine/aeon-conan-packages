@@ -1,0 +1,4 @@
+sources:
+  "1.0":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/opengl-registry/opengl-registry-1.0.tar.xz"
+    sha256: "d5309d4d999554ce36d811fc26e95802522fdc78503e00c00986e31bdb52e64e"
