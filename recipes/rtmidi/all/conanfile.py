@@ -8,11 +8,10 @@ class RTMidiConan(ConanFile):
     license = "RtMidi"
     homepage = "https://github.com/thestk/rtmidi"
     url = "https://github.com/thestk/rtmidi"
-    settings = ('os', 'arch', 'compiler', 'build_type')
+    settings = "os", "compiler", "build_type", "arch"
     description = "A set of C++ classes that provide a common API for realtime MIDI input/output across Linux (ALSA & JACK), Macintosh OS X (CoreMIDI) and Windows (Multimedia)"
     topics = ("midi", "audio")
     generators = ['cmake', 'cmake_find_package']
-    no_copy_source = True
 
     @property
     def _source_subfolder(self):
@@ -23,9 +22,6 @@ class RTMidiConan(ConanFile):
         cmake.definitions['BUILD_SHARED_LIBS'] = True
         cmake.definitions['BUILD_TESTING'] = False
         return cmake
-
-    def package_id(self):
-        self.info.header_only()
 
     def source(self):
         tools.get(**self.conan_data["sources"][self.version])
