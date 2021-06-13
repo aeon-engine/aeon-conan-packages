@@ -1,8 +1,20 @@
 --- llvm/CMakeLists.txt
 +++ llvm/CMakeLists.txt
-@@ -942,10 +942,6 @@
+@@ -62,6 +62,11 @@
+ set(CMAKE_CXX_STANDARD_REQUIRED YES)
+ set(CMAKE_CXX_EXTENSIONS NO)
+
++if (MSVC)
++    message(WARNING "!!! [AEON] Debug build is patched for bigobj")
++    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /bigobj")
++endif ()
++
+ if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+   message(STATUS "No build type selected, default to Debug")
+   set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Build type (default Debug)" FORCE)
+@@ -942,10 +947,6 @@
  include_directories( ${LLVM_INCLUDE_DIR} ${LLVM_MAIN_INCLUDE_DIR})
- 
+
  # when crosscompiling import the executable targets from a file
 -if(LLVM_USE_HOST_TOOLS)
 -  include(CrossCompile)
