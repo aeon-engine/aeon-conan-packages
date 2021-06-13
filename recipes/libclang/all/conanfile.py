@@ -216,107 +216,13 @@ class LibClangConan(ConanFile):
     def package(self):
         self.copy('llvm/LICENSE.TXT', dst='licenses', src=self._source_subfolder)
         self.copy('clang/LICENSE.TXT', dst='licenses', src=self._source_subfolder)
-        lib_path = os.path.join(self.package_folder, 'lib')
 
         cmake = self._configure_cmake()
         cmake.install()
 
-        if not self.options.shared:
-            for ext in ['.a', '.lib']:
-                lib = '*LLVMTableGenGlobalISel{}'.format(ext)
-                self.copy(lib, dst='lib', src='lib')
-
-            self.run('cmake --graphviz=graph/llvm.dot .')
-            with tools.chdir('graph'):
-                dot_text = tools.load('llvm.dot').replace('\r\n', '\n')
-
-            dep_regex = re.compile(r'//\s(.+)\s->\s(.+)$', re.MULTILINE)
-            deps = re.findall(dep_regex, dot_text)
-
-            dummy_targets = defaultdict(list)
-            for target, dep in deps:
-                if not target.startswith('LLVM'):
-                    dummy_targets[target].append(dep)
-
-            cmake_targets = {
-                'libffi::libffi': 'ffi',
-                'ZLIB::ZLIB': 'z',
-                'Iconv::Iconv': 'iconv',
-                'LibXml2::LibXml2': 'xml2'
-            }
-
-            components = defaultdict(list)
-            for lib, dep in deps:
-                if not lib.startswith('LLVM'):
-                    continue
-                elif dep.startswith('-delayload:'):
-                    continue
-                elif dep.startswith('LLVM'):
-                    components[dep]
-                elif dep in cmake_targets:
-                    dep = cmake_targets[dep]
-                elif os.path.exists(dep):
-                    dep = os.path.splitext(os.path.basename(dep))[0]
-                    dep = dep.replace('lib', '')
-                dep = dep.replace('-l', '')
-
-                if dep in dummy_targets.keys():
-                    components[lib].extend(dummy_targets[dep])
-                    components[lib] = list(set(components[lib]))
-                else:
-                    components[lib].append(dep)
-
         tools.rmdir(os.path.join(self.package_folder, 'bin'))
-        tools.rmdir(os.path.join(self.package_folder, 'lib', 'cmake'))
         tools.rmdir(os.path.join(self.package_folder, 'share'))
-
-        if not self.options.shared:
-            components_path = \
-                os.path.join(self.package_folder, 'lib', 'components.json')
-            with open(components_path, 'w') as components_file:
-                json.dump(components, components_file, indent=4)
-        else:
-            suffixes = ['.dylib', '.so']
-            for name in os.listdir(lib_path):
-                if not any(suffix in name for suffix in suffixes):
-                    os.remove(os.path.join(lib_path, name))
+        tools.rmdir(os.path.join(self.package_folder, 'libexec'))
 
     def package_info(self):
-        if self.options.shared:
-            self.cpp_info.libs = tools.collect_libs(self)
-            if self.settings.os == 'Linux':
-                self.cpp_info.system_libs = ['tinfo', 'pthread']
-                self.cpp_info.system_libs.extend(['rt', 'dl', 'm'])
-            elif self.settings.os == 'Macos':
-                self.cpp_info.system_libs = ['curses', 'm']
-            return
-
-        components_path = \
-            os.path.join(self.package_folder, 'lib', 'components.json')
-        with open(components_path, 'r') as components_file:
-            components = json.load(components_file)
-
-        dependencies = ['ffi', 'z', 'iconv', 'xml2']
-        targets = {
-            'ffi': 'libffi::libffi',
-            'z': 'zlib::zlib',
-            'xml2': 'libxml2::libxml2'
-        }
-
-        for lib, deps in components.items():
-            component = lib[4:].replace('LLVM', '').lower()
-
-            self.cpp_info.components[component].libs = [lib]
-
-            self.cpp_info.components[component].requires = [
-                dep[4:].replace('LLVM', '').lower()
-                for dep in deps if dep.startswith('LLVM')
-            ]
-            for lib, target in targets.items():
-                if lib in deps:
-                    self.cpp_info.components[component].requires.append(target)
-
-            self.cpp_info.components[component].system_libs = [
-                dep for dep in deps
-                if not dep.startswith('LLVM') and dep not in dependencies
-            ]
+        self.cpp_info.libs = ["libclang"]
