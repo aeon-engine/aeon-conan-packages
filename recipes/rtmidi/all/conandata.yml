@@ -1,0 +1,4 @@
+sources:
+  "4.0.0":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/rtmidi/rtmidi-4.0.0.tar.xz"
+    sha256: "3f40bafcf8bc4777b27cfe3701d7ae5fb4a1bb2d71e0bdf81744592730764a99"
