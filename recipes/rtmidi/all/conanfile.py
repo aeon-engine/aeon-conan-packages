@@ -19,6 +19,7 @@ class RTMidiConan(ConanFile):
 
     def _configure_cmake(self):
         cmake = CMake(self)
+        cmake.definitions['CMAKE_CXX_STANDARD'] = '11'
         cmake.definitions['BUILD_SHARED_LIBS'] = True
         cmake.definitions['BUILD_TESTING'] = False
         return cmake

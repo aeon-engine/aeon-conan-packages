@@ -2,6 +2,13 @@
 
 int main()
 {
-    RtMidiIn midi_in;
+    try
+    {
+        RtMidiIn midi_in;
+    }
+    catch (...)
+    {
+    }
+
     return 0;
 }
