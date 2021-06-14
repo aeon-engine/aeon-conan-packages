@@ -226,4 +226,7 @@ class LibClangConan(ConanFile):
         tools.rmdir(os.path.join(self.package_folder, 'libexec'))
 
     def package_info(self):
-        self.cpp_info.libs = ["libclang"]
+        if self.settings.os == 'Windows':
+            self.cpp_info.libs = ["libclang"]
+        else:
+            self.cpp_info.libs = ["clang"]
