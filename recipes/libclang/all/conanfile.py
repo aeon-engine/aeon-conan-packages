@@ -221,7 +221,8 @@ class LibClangConan(ConanFile):
         cmake.install()
 
         tools.remove_files_by_mask(self.package_folder, "*.pdb")
-        tools.rmdir(os.path.join(self.package_folder, 'bin'))
+        tools.remove_files_by_mask(self.package_folder, "*.exe")
+        tools.remove_files_by_mask(self.package_folder, "*.py")
         tools.rmdir(os.path.join(self.package_folder, 'share'))
         tools.rmdir(os.path.join(self.package_folder, 'libexec'))
 
