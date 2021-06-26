@@ -1,0 +1,4 @@
+sources:
+  "5.2.5":
+    sha256: c433e271055198d73285265119a4481ae98f6b56d9e4c55fe7fdb7abb7149c56
+    url: https://artifactory.aeons.dev/artifactory/aeon-cdn/xz/xz-5.2.5.tar.xz
