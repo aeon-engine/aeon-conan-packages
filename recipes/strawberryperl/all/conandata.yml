@@ -1,0 +1,4 @@
+sources:
+  "5.32.1.1":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/strawberry-perl/strawberry-perl-5.32.1.1.tar.xz"
+    sha256: "f909225f2bce494df7b5d0442f141303b4f355fa3f717e8cda4fafdc3b83adc6"
