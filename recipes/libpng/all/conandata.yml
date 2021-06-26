@@ -1,0 +1,4 @@
+sources:
+  "1.6.37":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/libpng/libpng-1.6.37.tar.xz"
+    sha256: "4de47b4e07c184eae4e2d606ee4e3527558e0ae935bb06e45686edbf893b1426"
