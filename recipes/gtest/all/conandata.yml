@@ -1,0 +1,4 @@
+sources:
+  "1.11.0":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/googletest/googletest-1.11.0.tar.xz"
+    sha256: "22e417e65499f02da026b81fcab38f19493470a621291c45247180227c225001"
