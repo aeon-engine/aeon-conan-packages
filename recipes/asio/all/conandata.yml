@@ -1,0 +1,4 @@
+sources:
+  "1.18.2":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/asio/asio-1.18.2.tar.xz"
+    sha256: "8c9ec715105696ef32d176ca489d9f01c68902cec59f3a8c93b71aa3f7b69d15"
