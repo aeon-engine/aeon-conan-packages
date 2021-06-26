@@ -1,0 +1,4 @@
+sources:
+  "20210604":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/msys/msys-20210604.tar.xz"
+    sha256: "21362af1e35f34442e30bef6b6ef055cf6bbbadd831bb7c76cfe2131ccb849f5"
