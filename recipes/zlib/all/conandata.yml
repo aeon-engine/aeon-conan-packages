@@ -1,0 +1,10 @@
+sources:
+  "1.2.11":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/zlib/zlib-1.2.11.tar.xz"
+    sha256: "731651bbb0ce34338cfd3d956c1f60d32018efc8a6ae1e87e32107a69bac5081"
+patches:
+  "1.2.11":
+    - patch_file: "patches/0002-gzguts-xcode12-compile-fix.patch"
+      base_path: "source_subfolder"
+    - patch_file: "patches/0003-cmake-fix-msys2-subsystem.patch"
+      base_path: "source_subfolder"
