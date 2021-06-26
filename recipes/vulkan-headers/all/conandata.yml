@@ -1,0 +1,4 @@
+sources:
+  "1.2.182":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/vulkan-headers/vulkan-headers-1.2.182.tar.xz"
+    sha256: "c79901f73eea2d056bfc12395092d4e5f9e60ffdbbc712779f8c585780b87047"
