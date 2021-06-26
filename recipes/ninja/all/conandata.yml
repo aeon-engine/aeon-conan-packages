@@ -1,0 +1,4 @@
+sources:
+  "1.10.2":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/ninja/ninja-1.10.2.tar.xz"
+    sha256: "f3646457f0f94e1c11bbeef0f514511917c3d2705987f3ce6bf416e849092d48"
