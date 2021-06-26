@@ -1,0 +1,8 @@
+sources:
+  "1.16":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/libiconv/libiconv-1.16.tar.xz"
+    sha256: "a4c142a26312b264ecda7de6c1611c139af5d94a31bf01f57afc359a01087524"
+patches:
+  "1.16":
+    - patch_file: "patches/0001-libcharset-fix-linkage.patch"
+      base_path: "source_subfolder"
