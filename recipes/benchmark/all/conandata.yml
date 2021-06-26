@@ -1,0 +1,4 @@
+sources:
+  "1.5.5":
+    sha256: 5d665f800e31e1e7c2ca86fa81735fbd04bc586b76bb7046d879c98720a13073
+    url: https://artifactory.aeons.dev/artifactory/aeon-cdn/benchmark/benchmark-1.5.5.tar.xz
