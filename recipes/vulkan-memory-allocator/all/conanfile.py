@@ -10,7 +10,7 @@ class VulkanMemoryAllocatorConan(ConanFile):
     url = "https://github.com/conan-io/conan-center-index"
     description = "Easy to integrate Vulkan memory allocation library."
     topics = ("vulkan", "memory-allocator", "graphics")
-    requires = ("vulkan-headers/1.2.176.0")
+    requires = ("vulkan-headers/1.2.182@aeon/stable")
     no_copy_source = True
 
     @property
