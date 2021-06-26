@@ -1,0 +1,4 @@
+sources:
+  "2.9.12":
+    url: https://artifactory.aeons.dev/artifactory/aeon-cdn/libxml2/libxml2-2.9.12.tar.xz
+    sha256: 3ac62c9bf7ba653b9a8bb4258bc23b3b4f486a5ea225a7352bac87c162455535
