@@ -1,0 +1,12 @@
+sources:
+  "1.7.4":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/pkgconf/pkgconf-1.7.4.tar.xz"
+    sha256: "736f08cc486655507037f4900f36f3a3c5b48537f2b6b954b31a1e85fa3b3136"
+patches:
+  "1.7.4":
+    - patch_file: "patches/1.7.4-0001-clang-12-strndup-not-in-string-h.patch"
+      base_path: "source_subfolder"
+    - patch_file: "patches/1.7.4-0002-fix-static-link.patch"
+      base_path: "source_subfolder"
+    - patch_file: "patches/1.7.4-0003-PKG_CONF_PATH-allow-colon+semicolon-separator.patch"
+      base_path: "source_subfolder"
