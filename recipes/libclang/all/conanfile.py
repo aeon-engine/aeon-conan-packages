@@ -184,11 +184,12 @@ class LibClangConan(ConanFile):
 
     def requirements(self):
         if self.options.with_ffi:
-            self.requires('libffi/3.3')
+            raise ConanInvalidConfiguration('Building with ffi is not supported.')
+            #self.requires('libffi/3.3')
         if self.options.get_safe('with_zlib', False):
-            self.requires('zlib/1.2.11')
+            self.requires('zlib/1.2.11@aeon/stable')
         if self.options.get_safe('with_xml2', False):
-            self.requires('libxml2/2.9.10')
+            self.requires('libxml2/2.9.12@aeon/stable')
 
     def configure(self):
         if self.options.shared:  # Shared builds disabled just due to the CI
