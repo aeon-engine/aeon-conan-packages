@@ -1,0 +1,4 @@
+sources:
+  "0.58.1":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/meson/meson-0.58.1.tar.xz"
+    sha256: "6310e0e04f62a249858b7e1aa9958232aa847406885b6e5323d2eeef43bc331f"
