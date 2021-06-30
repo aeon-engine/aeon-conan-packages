@@ -4,6 +4,7 @@ import pathlib
 import os
 import sys
 import yaml
+from distutils.version import StrictVersion
 
 
 def system(command):
@@ -20,15 +21,20 @@ def main(argv):
     package_namespace_split = full_package_name.split("@")
 
     if len(package_namespace_split) != 2:
-        raise Exception('Given package must be name/version@user/channel')
+        raise Exception('Given package must be name/version@user/channel or name@user/channel')
 
     package_name_split = package_namespace_split[0].split("/")
+    package_name_split_components = len(package_name_split)
 
-    if len(package_name_split) != 2:
-        raise Exception('Given package must be name/version@user/channel')
+    if package_name_split_components != 1 and package_name_split_components != 2:
+        raise Exception('Given package must be name/version@user/channel or name@user/channel')
 
     package_name = package_name_split[0]
-    package_version = package_name_split[1]
+
+    if package_name_split_components == 2 and package_name_split[1] != '':
+        package_version = package_name_split[1]
+    else:
+        package_version = 'latest'
 
     user_channel_split = package_namespace_split[1].split("/")
 
@@ -52,6 +58,16 @@ def main(argv):
     with open(package_version_yaml, 'r') as stream:
         version_info = yaml.safe_load(stream)
 
+        if package_version == 'latest':
+            version_list = list(version_info['versions'].keys())
+
+            if len(version_list) == 0:
+                raise Exception('No versions.')
+
+            version_list.sort(key=StrictVersion)
+            package_version = version_list[0]
+            print('Auto-selected version {}'.format(package_version))
+
         if package_version not in version_info['versions']:
             raise Exception('Unknown package version')
 
@@ -61,7 +77,8 @@ def main(argv):
 
     additional_params = " ".join(sys.argv[2:])
 
-    system('conan create %s %s %s' % (full_package_path, full_package_name, additional_params))
+    system('conan create %s %s/%s@%s/%s %s' % (
+        full_package_path, package_name, package_version, user, channel, additional_params))
 
 
 if __name__ == "__main__":
