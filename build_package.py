@@ -77,8 +77,13 @@ def main(argv):
 
     additional_params = " ".join(sys.argv[2:])
 
-    system('conan create %s %s/%s@%s/%s %s' % (
-        full_package_path, package_name, package_version, user, channel, additional_params))
+    full_package_name = '%s/%s@%s/%s' % (package_name, package_version, user, channel)
+
+    with open('version.txt', 'w') as f:
+        f.write(full_package_name)
+
+    system('conan create %s %s %s' % (
+        full_package_path, full_package_name, additional_params))
 
 
 if __name__ == "__main__":
