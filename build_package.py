@@ -64,7 +64,19 @@ def main(argv):
             if len(version_list) == 0:
                 raise Exception('No versions.')
 
-            version_list.sort(key=StrictVersion)
+            dotted_version = True
+            for version in version_list:
+                if '.' not in version:
+                    dotted_version = False
+                    break
+
+            if dotted_version is True:
+                print('Version numbers are x.y.z. Using StrictVersion sorting.')
+                version_list.sort(key=StrictVersion)
+            else:
+                print('Version numbers are xxxyyyzzz. Using regular sorting.')
+                version_list.sort()
+
             package_version = version_list[0]
             print('Auto-selected version {}'.format(package_version))
 
