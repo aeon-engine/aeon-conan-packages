@@ -42,7 +42,15 @@ function Prepare
 
 function Build
 {
-    python build_package.py ${env:package_name}/${env:package_version}@${env:user_channel} -s build_type=${env:build_type}
+    if ((Get-Command "python3" -ErrorAction SilentlyContinue) -eq $null)
+    {
+        python3 build_package.py ${env:package_name}/${env:package_version}@${env:user_channel} -s build_type=${env:build_type}
+    }
+    else
+    {
+        python build_package.py ${env:package_name}/${env:package_version}@${env:user_channel} -s build_type=${env:build_type}
+    }
+
     $result = $LASTEXITCODE
     if ($result -ne 0)
     {
