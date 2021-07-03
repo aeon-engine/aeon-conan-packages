@@ -5,28 +5,12 @@ function Prepare
         Remove-Item "version.txt"
     }
 
-    conan remote add aeon ${env:conan_remote_url}
+    conan config install remotes.txt
 
     $result = $LASTEXITCODE
     if ($result -ne 0)
     {
-        throw "Failed to add conan remote: $result"
-    }
-
-    conan remote remove conancenter
-
-    $result = $LASTEXITCODE
-    if ($result -ne 0)
-    {
-        throw "Conan remove conancenter failed: $result"
-    }
-
-    conan remote remove conan-center
-
-    $result = $LASTEXITCODE
-    if ($result -ne 0)
-    {
-        throw "Conan remove conan-center failed: $result"
+        throw "Failed to install conan remote config: $result"
     }
 
     conan user -p ${env:conan_api_key} -r aeon ${env:conan_api_user}
