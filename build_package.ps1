@@ -18,7 +18,7 @@ function Prepare
     $result = $LASTEXITCODE
     if ($result -ne 0)
     {
-        throw "Failed to set conan credentials: $result"
+        echo "Warning: Failed to set conan credentials: $result"
     }
 
     $Env:CONAN_CPU_COUNT=4
