@@ -9,7 +9,7 @@ class PkgConfConan(ConanFile):
     url = "https://github.com/conan-io/conan-center-index"
     homepage = "https://git.sr.ht/~kaniini/pkgconf"
     topics = ("conan", "pkgconf")
-    settings = "os", "arch", "compiler", "build_type"
+    settings = "os", "arch", "compiler"
     license = "ISC"
     description = "package compiler and linker metadata toolkit"
     exports_sources = "patches/**"
