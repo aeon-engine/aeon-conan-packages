@@ -4,7 +4,7 @@ import pathlib
 import os
 import sys
 import yaml
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
 
 
 def system(command):
@@ -64,18 +64,7 @@ def main(argv):
             if len(version_list) == 0:
                 raise Exception('No versions.')
 
-            dotted_version = True
-            for version in version_list:
-                if '.' not in version:
-                    dotted_version = False
-                    break
-
-            if dotted_version is True:
-                print('Version numbers are x.y.z. Using StrictVersion sorting.')
-                version_list.sort(key=StrictVersion)
-            else:
-                print('Version numbers are xxxyyyzzz. Using regular sorting.')
-                version_list.sort()
+            version_list.sort(key=LooseVersion)
 
             package_version = version_list[0]
             print('Auto-selected version {}'.format(package_version), flush=True)
