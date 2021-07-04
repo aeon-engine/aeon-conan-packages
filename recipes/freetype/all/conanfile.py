@@ -84,9 +84,12 @@ class FreetypeConan(ConanFile):
         self._cmake.definitions["FT_WITH_ZLIB"] = self.options.with_zlib
         self._cmake.definitions["FT_WITH_PNG"] = self.options.with_png
         self._cmake.definitions["FT_WITH_BZIP2"] = False
+        self._cmake.definitions["CMAKE_DISABLE_FIND_PACKAGE_BZip2"] = True
         # TODO: Harfbuzz can be added as an option as soon as it is available.
         self._cmake.definitions["FT_WITH_HARFBUZZ"] = False
+        self._cmake.definitions["CMAKE_DISABLE_FIND_PACKAGE_HarfBuzz"] = True
         self._cmake.definitions["FT_WITH_BROTLI"] = False
+        self._cmake.definitions["CMAKE_DISABLE_FIND_PACKAGE_BrotliDec"] = True
         self._cmake.configure(build_dir=self._build_subfolder)
         return self._cmake
 
