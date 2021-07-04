@@ -2,3 +2,6 @@ sources:
   "2.1.0":
     url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/libjpeg-turbo/libjpeg-turbo-2.1.0.tar.xz"
     sha256: "edc8f6615fedadb42a53956cfea0c9f1db34cc31d895e9b1c85afce71de6e0f8"
+dependencies:
+  "2.1.0":
+    nasm: "nasm/2.15.05@aeon/stable"
