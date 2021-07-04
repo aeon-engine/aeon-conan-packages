@@ -78,7 +78,7 @@ def main(argv):
                 version_list.sort()
 
             package_version = version_list[0]
-            print('Auto-selected version {}'.format(package_version))
+            print('Auto-selected version {}'.format(package_version), flush=True)
 
         if package_version not in version_info['versions']:
             raise Exception('Unknown package version')
