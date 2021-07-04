@@ -9,7 +9,7 @@ class NASMConan(ConanFile):
     homepage = "http://www.nasm.us"
     description = "The Netwide Assembler, NASM, is an 80x86 and x86-64 assembler"
     license = "BSD-2-Clause"
-    settings = "os", "arch", "compiler", "build_type"
+    settings = "os", "arch", "compiler"
     topics = ("conan", "nasm", "installer", "assembler")
     exports_sources = "patches/**"
     _autotools = None
