@@ -16,3 +16,7 @@ patches:
       base_path: "source_subfolder"
     - patch_file: "patches/2.71-0006-autoconf-no-embedded-trailer_m4-path.patch"
       base_path: "source_subfolder"
+dependencies:
+  "2.71":
+    m4: "m4/1.4.18@aeon/stable"
+    msys2: "msys2/20210604@aeon/stable"

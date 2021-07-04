@@ -2,7 +2,6 @@ sources:
   "11.1.0":
     url: https://artifactory.aeons.dev/artifactory/aeon-cdn/libclang/libclang-11.1.0.tar.xz
     sha256: 6876d390cec795ac68418b66647655918653598209d0a212b1090c6e72172cd3
-
 patches:
   "11.1.0":
     - base_path: "source"
@@ -13,3 +12,7 @@ patches:
       patch_file: "patches/11.1.0-native.patch"
     - base_path: "source"
       patch_file: "patches/11.1.0-linux-cmake.patch"
+dependencies:
+  "11.1.0":
+    zlib: "zlib/1.2.11@aeon/stable"
+    libxml2: "libxml2/2.9.12@aeon/stable"

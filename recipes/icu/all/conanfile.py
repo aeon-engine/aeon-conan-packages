@@ -68,7 +68,7 @@ class ICUBase(ConanFile):
 
     def build_requirements(self):
         if tools.os_info.is_windows and not tools.get_env("CONAN_BASH_PATH"):
-            self.build_requires("msys2/20210604@aeon/stable")
+            self.build_requires(self.conan_data["dependencies"][self.version]["msys2"])
 
     def source(self):
         tools.get(**self.conan_data["sources"][self.version], strip_root=True, destination=self._source_subfolder)

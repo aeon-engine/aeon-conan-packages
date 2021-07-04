@@ -21,7 +21,7 @@ exec "$meson_dir/meson.py" "$@"
 """
 
     def requirements(self):
-        self.requires("ninja/1.10.2@aeon/stable")
+        self.requires(self.conan_data["dependencies"][self.version]["ninja"])
 
     def package_id(self):
         self.info.header_only()

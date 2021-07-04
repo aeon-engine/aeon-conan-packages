@@ -28,7 +28,7 @@ class AutomakeConan(ConanFile):
         del self.settings.compiler.libcxx
 
     def requirements(self):
-        self.requires("autoconf/2.71@aeon/stable")
+        self.requires(self.conan_data["dependencies"][self.version]["autoconf"])
         # automake requires perl-Thread-Queue package
 
     def package_id(self):
@@ -37,7 +37,7 @@ class AutomakeConan(ConanFile):
 
     def build_requirements(self):
         if tools.os_info.is_windows and not tools.get_env("CONAN_BASH_PATH"):
-            self.build_requires("msys2/20210604@aeon/stable")
+            self.build_requires(self.conan_data["dependencies"][self.version]["msys2"])
 
     def source(self):
         tools.get(**self.conan_data["sources"][self.version])

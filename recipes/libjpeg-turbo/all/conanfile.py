@@ -84,7 +84,7 @@ class LibjpegTurboConan(ConanFile):
 
     def build_requirements(self):
         if self.options.get_safe("SIMD"):
-            self.build_requires("nasm/2.15.05@aeon/stable")
+            self.build_requires(self.conan_data["dependencies"][self.version]["nasm"])
 
     def source(self):
         tools.get(**self.conan_data["sources"][self.version])

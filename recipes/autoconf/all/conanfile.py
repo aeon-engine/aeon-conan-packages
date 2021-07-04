@@ -22,7 +22,7 @@ class AutoconfConan(ConanFile):
         os.rename("{}-{}".format(self.name, self.version), self._source_subfolder)
 
     def requirements(self):
-        self.requires("m4/1.4.18@aeon/stable")
+        self.requires(self.conan_data["dependencies"][self.version]["m4"])
 
     def package_id(self):
         del self.info.settings.arch
@@ -32,7 +32,7 @@ class AutoconfConan(ConanFile):
 
     def build_requirements(self):
         if tools.os_info.is_windows and not tools.get_env("CONAN_BASH_PATH"):
-            self.build_requires("msys2/20210604@aeon/stable")
+            self.build_requires(self.conan_data["dependencies"][self.version]["msys2"])
 
     @property
     def _datarootdir(self):

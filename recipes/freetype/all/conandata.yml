@@ -2,3 +2,7 @@ sources:
   "2.10.4":
     url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/freetype/freetype-2.10.4.tar.xz"
     sha256: "df6d8e334e0318372b540104d230a5753fd8e9d4548bd9eff1a79cca323c518b"
+dependencies:
+  "2.10.4":
+    zlib: "zlib/1.2.11@aeon/stable"
+    libpng: "libpng/1.6.37@aeon/stable"

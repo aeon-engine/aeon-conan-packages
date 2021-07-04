@@ -10,3 +10,6 @@ patches:
       base_path: "source_subfolder"
     - patch_file: "patches/1.7.4-0003-PKG_CONF_PATH-allow-colon+semicolon-separator.patch"
       base_path: "source_subfolder"
+dependencies:
+  "1.7.4":
+    meson: "meson/0.58.1@aeon/stable"

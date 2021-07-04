@@ -24,7 +24,7 @@ class NASMConan(ConanFile):
 
     def build_requirements(self):
         if tools.os_info.is_windows and not tools.which("perl"):
-            self.build_requires("strawberryperl/5.32.1.1@aeon/stable")
+            self.build_requires(self.conan_data["dependencies"][self.version]["strawberryperl"])
 
     def source(self):
         tools.get(**self.conan_data["sources"][self.version])

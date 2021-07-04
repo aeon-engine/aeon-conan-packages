@@ -6,3 +6,6 @@ patches:
   "2.15.05":
     - patch_file: "patches/2.15.05-0001-disable-newly-integrated-dependency-tracking.patch"
       base_path: "source_subfolder"
+dependencies:
+  "2.15.05":
+    strawberryperl: "strawberryperl/5.32.1.1@aeon/stable"

@@ -19,7 +19,9 @@ class LibpngConan(ConanFile):
     _source_subfolder = "source_subfolder"
 
     def requirements(self):
-        self.requires("zlib/1.2.11@aeon/stable")
+        print("------------------------------")
+        print(self.conan_data["dependencies"][self.version])
+        self.requires(self.conan_data["dependencies"][self.version]["zlib"])
 
     def config_options(self):
         if self.settings.os == "Windows":

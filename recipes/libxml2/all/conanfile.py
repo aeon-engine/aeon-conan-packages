@@ -83,20 +83,21 @@ class Libxml2Conan(ConanFile):
 
     def requirements(self):
         if self.options.zlib:
-            self.requires("zlib/1.2.11@aeon/stable")
+            self.requires(self.conan_data["dependencies"][self.version]["zlib"])
         if self.options.lzma:
-            self.requires("xz_utils/5.2.5@aeon/stable")
+            self.requires(self.conan_data["dependencies"][self.version]["xz_utils"])
         if self.options.iconv:
-            self.requires("libiconv/1.16@aeon/stable")
+            self.requires(self.conan_data["dependencies"][self.version]["libiconv"])
         if self.options.icu:
-            self.requires("icu/69.1@aeon/stable")
+            self.requires(self.conan_data["dependencies"][self.version]["icu"])
 
     def build_requirements(self):
         if not self._is_msvc:
             if self.options.zlib or self.options.lzma or self.options.icu:
-                self.build_requires("pkgconf/1.7.4@aeon/stable")
+                self.build_requires(self.conan_data["dependencies"][self.version]["pkgconf"])
+
             if tools.os_info.is_windows and not tools.get_env("CONAN_BASH_PATH"):
-                self.build_requires("msys2/20210604@aeon/stable")
+                self.build_requires(self.conan_data["dependencies"][self.version]["msys2"])
 
     def source(self):
         tools.get(**self.conan_data["sources"][self.version])

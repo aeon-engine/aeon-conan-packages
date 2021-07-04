@@ -54,9 +54,9 @@ class FreetypeConan(ConanFile):
 
     def requirements(self):
         if self.options.with_png:
-            self.requires("libpng/1.6.37@aeon/stable")
+            self.requires(self.conan_data["dependencies"][self.version]["libpng"])
         if self.options.with_zlib:
-            self.requires("zlib/1.2.11@aeon/stable")
+            self.requires(self.conan_data["dependencies"][self.version]["zlib"])
 
     def source(self):
         tools.get(**self.conan_data["sources"][self.version])

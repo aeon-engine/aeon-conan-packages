@@ -6,3 +6,6 @@ patches:
   "1.16":
     - patch_file: "patches/0001-libcharset-fix-linkage.patch"
       base_path: "source_subfolder"
+dependencies:
+  "1.16":
+    msys2: "msys2/20210604@aeon/stable"
