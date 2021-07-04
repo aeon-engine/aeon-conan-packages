@@ -20,7 +20,7 @@ class LibClangConan(ConanFile):
     homepage = 'https://github.com/llvm/llvm-project/tree/master/llvm'
     url = 'https://github.com/conan-io/conan-center-index'
 
-    settings = ('os', 'arch', 'compiler', 'build_type')
+    settings = ('os', 'arch', 'compiler')
     options = {
         'shared': [True, False],
         'fPIC': [True, False],
