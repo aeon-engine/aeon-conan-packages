@@ -55,6 +55,7 @@ class FreetypeConan(ConanFile):
     def requirements(self):
         if self.options.with_png:
             self.requires(self.conan_data["dependencies"][self.version]["libpng"])
+
         if self.options.with_zlib:
             self.requires(self.conan_data["dependencies"][self.version]["zlib"])
 
@@ -82,8 +83,10 @@ class FreetypeConan(ConanFile):
         self._cmake.definitions["PROJECT_VERSION"] = self._libtool_version
         self._cmake.definitions["FT_WITH_ZLIB"] = self.options.with_zlib
         self._cmake.definitions["FT_WITH_PNG"] = self.options.with_png
+        self._cmake.definitions["FT_WITH_BZIP2"] = False
         # TODO: Harfbuzz can be added as an option as soon as it is available.
         self._cmake.definitions["FT_WITH_HARFBUZZ"] = False
+        self._cmake.definitions["FT_WITH_BROTLI"] = False
         self._cmake.configure(build_dir=self._build_subfolder)
         return self._cmake
 
