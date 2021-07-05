@@ -150,8 +150,7 @@ class LibClangConan(ConanFile):
             self.options.unwind_tables
         cmake.definitions['LLVM_ENABLE_EXPENSIVE_CHECKS'] = \
             self.options.expensive_checks
-        cmake.definitions['LLVM_ENABLE_ASSERTIONS'] = \
-            self.settings.build_type == 'Debug'
+        cmake.definitions['LLVM_ENABLE_ASSERTIONS'] = False
 
         cmake.definitions['LLVM_USE_NEWPM'] = False
         cmake.definitions['LLVM_USE_OPROFILE'] = False
