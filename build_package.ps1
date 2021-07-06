@@ -20,8 +20,6 @@ function Prepare
     {
         echo "Warning: Failed to set conan credentials: $result"
     }
-
-    $Env:CONAN_CPU_COUNT=4
 }
 
 function Build
