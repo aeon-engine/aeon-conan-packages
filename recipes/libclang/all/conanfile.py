@@ -102,7 +102,7 @@ class LibClangConan(ConanFile):
             tools.replace_in_file('FindIconv.cmake', 'iconv charset', 'iconv')
 
     def _configure_cmake(self):
-        cmake = CMake(self)
+        cmake = CMake(self, build_type="Release")
         cmake.definitions['BUILD_SHARED_LIBS'] = False
         cmake.definitions['CMAKE_SKIP_RPATH'] = True
         cmake.definitions['CMAKE_POSITION_INDEPENDENT_CODE'] = \
