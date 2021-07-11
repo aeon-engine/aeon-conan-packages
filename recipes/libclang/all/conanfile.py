@@ -20,7 +20,7 @@ class LibClangConan(ConanFile):
     homepage = 'https://github.com/llvm/llvm-project/tree/master/llvm'
     url = 'https://github.com/conan-io/conan-center-index'
 
-    settings = ('os', 'arch', 'compiler')
+    settings = "os", "arch", "compiler", "build_type"
     options = {
         'shared': [True, False],
         'fPIC': [True, False],
@@ -227,6 +227,13 @@ class LibClangConan(ConanFile):
         tools.remove_files_by_mask(self.package_folder, "*.py")
         tools.rmdir(os.path.join(self.package_folder, 'share'))
         tools.rmdir(os.path.join(self.package_folder, 'libexec'))
+
+    def conan_info(self):
+        self.info.settings.build_type = "None"
+
+    def package_id(self):
+        self.info.settings.build_type = "None"
+        self.info.settings.compiler.runtime = "None"
 
     def package_info(self):
         if self.settings.os == 'Windows':
