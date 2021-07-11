@@ -98,6 +98,12 @@ class GTestConan(ConanFile):
     def package_id(self):
         del self.info.options.no_main
 
+        # On linux, clang is binary compatible with gcc if libcxx matches
+        if self.settings.os == "Linux" and self.settings.compiler == "clang":
+            self.info.settings.compiler = "gcc"
+            self.info.settings.compiler.version = "11"
+            self.info.settings.compiler.libcxx = self.settings.compiler.libcxx
+
     def package_info(self):
         self.cpp_info.names["cmake_find_package"] = "GTest"
         self.cpp_info.names["cmake_find_package_multi"] = "GTest"

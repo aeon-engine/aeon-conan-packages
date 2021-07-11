@@ -66,6 +66,12 @@ class ICUBase(ConanFile):
         del self.info.options.with_unit_tests  # ICU unit testing shouldn't affect the package's ID
         del self.info.options.silent  # Verbosity doesn't affect package's ID
 
+        # On linux, clang is binary compatible with gcc if libcxx matches
+        if self.settings.os == "Linux" and self.settings.compiler == "clang":
+            self.info.settings.compiler = "gcc"
+            self.info.settings.compiler.version = "11"
+            self.info.settings.compiler.libcxx = self.settings.compiler.libcxx
+
     def build_requirements(self):
         if tools.os_info.is_windows and not tools.get_env("CONAN_BASH_PATH"):
             self.build_requires(self.conan_data["dependencies"][self.version]["msys2"])

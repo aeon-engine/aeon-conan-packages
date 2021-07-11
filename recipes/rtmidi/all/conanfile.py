@@ -42,5 +42,12 @@ class RTMidiConan(ConanFile):
         tools.rmdir(os.path.join(self.package_folder, 'share'))
         tools.rmdir(os.path.join(self.package_folder, 'lib', 'pkgconfig'))
 
+    def package_id(self):
+        # On linux, clang is binary compatible with gcc if libcxx matches
+        if self.settings.os == "Linux" and self.settings.compiler == "clang":
+            self.info.settings.compiler = "gcc"
+            self.info.settings.compiler.version = "11"
+            self.info.settings.compiler.libcxx = self.settings.compiler.libcxx
+
     def package_info(self):
         self.cpp_info.libs = ["rtmidi"]

@@ -167,6 +167,12 @@ conan_staticlibs="{staticlibs}"
         if os.name == "posix":
             os.chmod(filename, os.stat(filename).st_mode | 0o111)
 
+    def package_id(self):
+        # On linux, clang is binary compatible with gcc if libcxx matches
+        if self.settings.os == "Linux" and self.settings.compiler == "clang":
+            self.info.settings.compiler = "gcc"
+            self.info.settings.compiler.version = "11"
+
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
         if self.settings.os == "Linux":

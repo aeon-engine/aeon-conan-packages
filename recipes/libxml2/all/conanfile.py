@@ -276,6 +276,12 @@ class Libxml2Conan(ConanFile):
     def _module_file(self):
         return "conan-official-{}-variables.cmake".format(self.name)
 
+    def package_id(self):
+        # On linux, clang is binary compatible with gcc if libcxx matches
+        if self.settings.os == "Linux" and self.settings.compiler == "clang":
+            self.info.settings.compiler = "gcc"
+            self.info.settings.compiler.version = "11"
+
     def package_info(self):
         if self._is_msvc:
             self.cpp_info.libs = ['libxml2' if self.options.shared else 'libxml2_a']

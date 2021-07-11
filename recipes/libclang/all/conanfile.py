@@ -235,6 +235,12 @@ class LibClangConan(ConanFile):
         self.info.settings.build_type = "None"
         self.info.settings.compiler.runtime = "None"
 
+        # On linux, clang is binary compatible with gcc if libcxx matches
+        if self.settings.os == "Linux" and self.settings.compiler == "clang":
+            self.info.settings.compiler = "gcc"
+            self.info.settings.compiler.version = "11"
+            self.info.settings.compiler.libcxx = self.settings.compiler.libcxx
+
     def package_info(self):
         if self.settings.os == 'Windows':
             self.cpp_info.libs = ["libclang"]

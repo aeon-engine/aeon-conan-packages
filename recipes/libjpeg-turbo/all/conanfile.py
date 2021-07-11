@@ -139,6 +139,12 @@ class LibjpegTurboConan(ConanFile):
             for bin_file in glob.glob(os.path.join(self.package_folder, "bin", pattern_to_remove)):
                 os.remove(bin_file)
 
+    def package_id(self):
+        # On linux, clang is binary compatible with gcc if libcxx matches
+        if self.settings.os == "Linux" and self.settings.compiler == "clang":
+            self.info.settings.compiler = "gcc"
+            self.info.settings.compiler.version = "11"
+
     def package_info(self):
         self.cpp_info.names["cmake_find_package"] = "libjpeg-turbo"
         self.cpp_info.names["cmake_find_package_multi"] = "libjpeg-turbo"
