@@ -1,0 +1,4 @@
+sources:
+  "3.2.1":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/utfcpp/utfcpp-3.2.1.tar.xz"
+    sha256: "aff4dc06aa587290a87836182c1dba964459df2b5b58e599c77036005bfb01eb"
