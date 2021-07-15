@@ -1,0 +1,16 @@
+sources:
+  "5.0.1":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/assimp/assimp-5.0.1.tar.xz"
+    sha256: "0c49270be6f28d667fdfd01f6d902feebc685fa140540e044c2cca006fa98c71"
+patches:
+  "5.0.1":
+    - patch_file: "patches/0001-unvendor-deps.patch"
+      base_path: "source_subfolder"
+    - patch_file: "patches/0002-fix-all-exporters-disabled.patch"
+      base_path: "source_subfolder"
+dependencies:
+  "5.0.1":
+    zlib: "zlib/1.2.11@aeon/stable"
+    irrxml: "irrxml/1.2@aeon/stable"
+    minizip: "minizip/1.2.11@aeon/stable"
+    utfcpp: "utfcpp/3.2.1@aeon/stable"
