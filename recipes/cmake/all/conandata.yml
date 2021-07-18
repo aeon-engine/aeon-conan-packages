@@ -1,0 +1,7 @@
+sources:
+  "3.20.4":
+    sha256: "adcb331a1f861aa29f0cd8037859e405e264bb3a570e28c37ab300a191cfb518"
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/cmake/cmake-3.20.4.tar.xz"
+dependencies:
+  "3.20.4":
+    openssl: "openssl/1.1.1k@aeon/stable"
