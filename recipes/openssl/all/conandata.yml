@@ -1,0 +1,10 @@
+sources:
+  "1.1.1k":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/openssl/openssl-1.1.1k.tar.xz"
+    sha256: "1b7a3e50cd294a45458f153aefd7c0009e195cce1c143cd2e697b6b190f84980"
+dependencies:
+  "1.1.1k":
+    zlib: "zlib/1.2.11@aeon/stable"
+    strawberryperl: "strawberryperl/5.32.1.1@aeon/stable"
+    nasm: "nasm/2.15.05@aeon/stable"
+    msys2: "msys2/20210604@aeon/stable"
