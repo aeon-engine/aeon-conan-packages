@@ -1,0 +1,8 @@
+sources:
+  "10.37":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/pcre2/pcre2-10.37.tar.xz"
+    sha256: "15323a457d7e5839246177c3a3fc3ad323192011a62d67c1be9dfd70f57e35e8"
+dependencies:
+  "10.37":
+    zlib: "zlib/1.2.11@aeon/stable"
+    bzip2: "bzip2/1.0.8@aeon/stable"
