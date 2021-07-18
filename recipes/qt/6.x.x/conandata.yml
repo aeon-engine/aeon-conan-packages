@@ -1,0 +1,17 @@
+sources:
+  "6.1.1":
+    url: "https://artifactory.aeons.dev/artifactory/aeon-cdn/qt/qt-6.1.1.tar.xz"
+    sha256: "21660e222bac79b6bbe86b7ec6a475a1633f6ff66e214c029a5ffbf8d51686e1"
+dependencies:
+  "6.1.1":
+    zlib: "zlib/1.2.11@aeon/stable"
+    freetype: "freetype/2.10.4@aeon/stable"
+    icu: "icu/69.1@aeon/stable"
+    libjpeg-turbo: "libjpeg-turbo/2.1.0@aeon/stable"
+    libpng: "libpng/1.6.37@aeon/stable"
+    pcre2: "pcre2/10.37@aeon/stable"
+    openssl: "openssl/1.1.1k@aeon/stable"
+    cmake: "cmake/3.20.4@aeon/stable"
+    ninja: "ninja/1.10.2@aeon/stable"
+    pkgconf: "pkgconf/1.7.4@aeon/stable"
+    strawberryperl: "strawberryperl/5.32.1.1@aeon/stable"
